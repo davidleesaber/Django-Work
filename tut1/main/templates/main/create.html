@@ -1,0 +1,21 @@
+{% extends "main/base.html" %}
+
+{% block title %} Create New List {% endblock %}
+
+{% block content %} <h3>Create Page </h3>
+
+<form method="post" action="/create/" class="form-group">
+    <!-- have to pass a csrf token to actually create the form after clicking the button-->
+     {% csrf_token %}
+     <div class="input-group mn-3">
+
+      <!-- passing this form object will generate the form fields for us,
+        all we have to do is make the form tags and a submit button-->
+      <div class="input-group-prepend">
+          <button type="submit", name="save" class="btn btn-success"> Create New </button>
+          {{form.name}}
+      </div>
+    </div>
+</form>
+
+{% endblock %}

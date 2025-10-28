@@ -1,0 +1,43 @@
+<!-- display our lists in list form -->
+ {%extends "main/base.html" %}
+
+ <!-- A block in the base template marks a section that child templates may replace, 
+  and if a child doesn’t override it, the base’s default content is used -->
+ {%block title%}
+    View List
+ {%endblock%}
+
+  {%block content%}
+    <h1>{{ls.name}}</h1>
+    <form method="post" action="#">
+        <!-- need one of these each time we create a token-->
+        {% csrf_token %}
+
+            <!-- Writting a python ish forloop to loop through all items-->
+            {% for item in ls.item_set.all %}
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                <!-- how to write if statements-->
+                    <div class="input-group-text">
+                        {% if item.complete == True %}
+                            <!-- display the item text -->
+                            <input type="checkbox", value="clicked", name="c{{item.id}}" checked>                  
+                        {% else %}
+                            <input type="checkbox", value="clicked", name="c{{item.id}}">        
+                        <!-- we dont actually need to end the else, because end if signifies the end -->
+                        {% endif %}
+                    </div>
+                </div>
+                <input type="text", value="{{item.text}}" class="form-control"/>
+            </div>
+            {% endfor %}
+        
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button type="submit", name="newItem", value="newItem:", class="btn btn-success">Add</button>
+            </div>
+            <input type="text", name="new">
+        </div>
+        <button type="submit", name="save", value="save:", class="btn btn-success">Save</button>
+    </form>
+ {%endblock%}
