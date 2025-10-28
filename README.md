@@ -1,6 +1,6 @@
 # Django-Work  
 
-A beginner-friendly Django project created while following the “Django For Beginners – Full Tutorial” workflow, with extra inline comments in code for learning.
+A beginner-friendly Django project created with extra inline comments in code for learning.
 
 ## Overview
 This repo demonstrates the core Django flow: start a project, add an app, wire URLs and views, run the local server, define models, and apply migrations. 
